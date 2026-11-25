@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mata Warga — ETLE Versi Warga</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <header>
+  <!-- Tambahan Logo Baru Anda -->
+  <img src="/static/logo.png" alt="Logo Mata Warga" class="logo">
+  <h1>Mata Warga</h1>
+  <span class="badge">ETLE versi warga</span>
+  <nav>
+    <button data-tab="report" class="active">Lapor</button>
+    <button data-tab="police">Polisi</button>
+    <button data-tab="feed">Riwayat</button>
+  </nav>
+</header>
+
+
+<main>
+
+  <!-- ===== TAB LAPOR ===== -->
+  <section id="tab-report" class="panel active">
+    <div class="stats" id="stats-box"></div>
+
+    <div class="card">
+      <h2>📸 Lapor Pelanggaran</h2>
+      <label>Jenis Pelanggaran</label>
+      <select id="violation_type">
+        <option value="helmet">Tidak pakai helm</option>
+        <option value="wrong_way">Melawan arus</option>
+        <option value="red_light">Menerobos lampu merah</option>
+      </select>
+
+      <label>Plat Nomor (opsional, jika terbaca)</label>
+      <input id="plate_number" placeholder="Contoh: B 1234 XYZ">
+
+      <label>Ambil Foto / Video Bukti</label>
+      <input type="file" id="photo" accept="image/*" capture="environment">
+
+      <video id="camera" autoplay muted playsinline style="display:none"></video>
+      <button class="btn" id="btn-camera" type="button">🎥 Buka Kamera Live</button>
+      <button class="btn green" id="btn-capture" type="button" style="display:none">📷 Jepret</button>
+      <canvas id="snapshot"></canvas>
+
+      <button class="btn" id="btn-submit" type="button">🚀 Kirim Laporan</button>
+      <p class="hint">Lokasi GPS akan diambil otomatis. Bukti wajib di jalan umum.</p>
+
+      <div class="ai-box" id="ai-box"></div>
+    </div>
+  </section>
+
+  <!-- ===== TAB POLISI ===== -->
+  <section id="tab-police" class="panel">
+    <div class="card">
+      <h2>👮 Panel Validasi Polri</h2>
+      <p class="hint">Hanya untuk petugas terverifikasi. Menampilkan laporan berstatus pending.</p>
+    </div>
+    <div id="police-list"></div>
+  </section>
+
+  <!-- ===== TAB RIWAYAT ===== -->
+  <section id="tab-feed" class="panel">
+    <div class="card">
+      <h2>📋 Riwayat Laporan</h2>
+      <select id="filter-status">
+        <option value="">Semua status</option>
+        <option value="pending">Menunggu validasi</option>
+        <option value="valid">Valid (diterima)</option>
+        <option value="rejected">Ditolak</option>
+      </select>
+    </div>
+    <div id="feed-list"></div>
+  </section>
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="/static/app.js"></script>
+
+</body>
+</html>

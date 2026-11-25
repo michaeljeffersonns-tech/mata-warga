@@ -1,4 +1,4 @@
-const API = "";  // same-origin; ganti jika backend beda host
+const API = "http://127.0.0.1:8000"; 
 
 // ===== Navigasi Tab =====
 document.querySelectorAll("nav button").forEach(btn => {
